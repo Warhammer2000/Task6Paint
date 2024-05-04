@@ -1,0 +1,46 @@
+﻿@page "/Board/{BoardId}"
+@model DrawingHubs.Pages.BoardModel
+@{
+	ViewData["Title"] = "Board";
+}
+
+<h1>Board: @Model.Boards.</h1>
+<label for="tool">Инструмент:</label>
+<select id="tool">
+	<option value="pencil">Карандаш</option>
+	<option value="pen">Ручка</option>
+	<option value="marker">Маркер</option>
+	<option value="rectangle">Прямоугольник</option>
+	<option value="circle">Круг</option>
+</select>
+
+<label for="color">Цвет:</label>
+<select id="color">
+	<option value="black">Черный</option>
+	<option value="red">Красный</option>
+	<option value="blue">Синий</option>
+	<option value="green">Зеленый</option>
+</select>
+
+<label for="thickness">Толщина:</label>
+<select id="thickness">
+	<option value="1">1px</option>
+	<option value="3">3px</option>
+	<option value="5">5px</option>
+	<option value="10">10px</option>
+</select>
+
+<canvas id="drawingCanvas" width="800" height="600" style="border:1px solid black;"></canvas>
+<button id="clearCanvas">Очистить</button>
+<button id="drawRectangleButton">Нарисовать прямоугольник</button>
+<button id="drawCircleButton">Нарисовать круг</button>
+@* <button id="saveThumbnailButton">Сохранить миниатюру</button> *@
+<button id="downloadJPEGButton">Скачать как JPEG</button>
+<label for="zoomSlider">Масштаб: <span id="zoomValue">100%</span></label>
+<input type="range" id="zoomSlider" min="50" max="150" value="100" step="1">
+
+
+@section Scripts {
+	<script src="~/lib/signalr/dist/browser/signalr.min.js"></script>
+	<script src="~/js/drawing.js"></script>
+}
